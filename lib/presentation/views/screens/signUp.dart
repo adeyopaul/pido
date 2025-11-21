@@ -18,8 +18,8 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   final PageController _pageController = PageController();
   final int _pageControllerCount = 0;
-  final bool isThirdPage = false;
-  final bool isLastPage = false;
+  bool isThirdPage = false;
+  bool isLastPage = false;
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -37,8 +37,8 @@ class _SignupState extends State<Signup> {
                 physics: NeverScrollableScrollPhysics(),
                 onPageChanged: (index){
                   setState(() {
-                    isThirdPage == 2;
-                    isThirdPage == 3;
+                    isThirdPage = (index == 2);
+                    isLastPage = (index == 3);
                   });
                 },
                 children: [
@@ -49,7 +49,7 @@ class _SignupState extends State<Signup> {
                 ],
               ),
               Positioned(
-                top: height * 0.70,
+                top: height * 0.76,
                 left: 0,
                 right: 0,
                 child: Column(

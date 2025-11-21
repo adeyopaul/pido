@@ -51,6 +51,8 @@ class AppTheme {
       labelLarge: AppTextStyles.button.copyWith(
         color: AppColors.textPrimaryLight,
       ),
+      headlineLarge: AppTextStyles.body1.copyWith(color: AppColors.textSecondaryLight, height: 2.0),
+      headlineMedium: AppTextStyles.body1.copyWith(color: AppColors.textCardSubTitleLight),
     ),
     // inputDecorationTheme: InputDecorationTheme(
     //   filled: true,
