@@ -99,6 +99,34 @@ class _SignupState extends State<Signup> {
                                 ?.copyWith(fontWeight: FontWeight.w700),
                           ),
                         ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(builder: (context) => Signin()),
+                                  (Route<dynamic> route) => false,
+                            );
+                          },
+                          child: Text(
+                            'Log in',
+                            style: Theme.of(context).textTheme.bodyLarge
+                                ?.copyWith(fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(builder: (context) => Signin()),
+                                  (Route<dynamic> route) => false,
+                            );
+                          },
+                          child: Text(
+                            'Log in',
+                            style: Theme.of(context).textTheme.bodyLarge
+                                ?.copyWith(fontWeight: FontWeight.w700),
+                          ),
+                        ),
                       ],
                     ),
                   ],
