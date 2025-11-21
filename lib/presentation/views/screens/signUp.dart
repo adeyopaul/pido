@@ -21,6 +21,10 @@ class _SignupState extends State<Signup> {
   bool isThirdPage = false;
   bool isLastPage = false;
   @override
+  //this is a test
+  //testing
+  //collaboration
+  //github
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final width = MediaQuery.of(context).size.width;
