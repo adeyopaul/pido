@@ -25,7 +25,7 @@ class AppTextStyles {
   static TextStyle body1 = TextStyle(
     fontFamily: fontFamily,
     fontSize: 16.sp,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
   );
 
   static TextStyle body2 = TextStyle(
