@@ -20,11 +20,8 @@ class _SignupState extends State<Signup> {
   final int _pageControllerCount = 0;
   bool isThirdPage = false;
   bool isLastPage = false;
+  bool isFirstPage = true;
   @override
-  //this is a test
-  //testing
-  //collaboration
-  //github
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final width = MediaQuery.of(context).size.width;
@@ -39,10 +36,11 @@ class _SignupState extends State<Signup> {
               PageView(
                 controller: _pageController,
                 physics: NeverScrollableScrollPhysics(),
-                onPageChanged: (index){
+                onPageChanged: (index) {
                   setState(() {
                     isThirdPage = (index == 2);
                     isLastPage = (index == 3);
+                    isFirstPage = (index == 0);
                   });
                 },
                 children: [
@@ -53,30 +51,44 @@ class _SignupState extends State<Signup> {
                 ],
               ),
               Positioned(
-                top: height * 0.76,
+                top: height * 0.75,
                 left: 0,
                 right: 0,
                 child: Column(
                   children: [
-                    isThirdPage ? Elevatedbutton(
-                      buttonTitle: 'Verify OTP',
-                      isEmpty: false,
-                      buttonFunction: () {
-                        _pageController.nextPage(duration: Duration(milliseconds: 200), curve: Curves.bounceInOut);
-                      },
-                    ) :isLastPage ? Elevatedbutton(
-                      buttonTitle: 'Proceed to Dashboard',
-                      isEmpty: false,
-                      buttonFunction: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Signin()));
-                      },
-                    ) :
-                    Elevatedbutton(buttonTitle: 'Next', buttonFunction: (){
-                      _pageController.nextPage(
-                        duration: Duration(microseconds: 3),
-                        curve: Curves.bounceInOut,
-                      );
-                    }),
+                    isThirdPage
+                        ? Elevatedbutton(
+                            buttonTitle: 'Verify OTP',
+                            isEmpty: false,
+                            buttonFunction: () {
+                              _pageController.nextPage(
+                                duration: Duration(milliseconds: 200),
+                                curve: Curves.bounceInOut,
+                              );
+                            },
+                          )
+                        : isLastPage
+                        ? Elevatedbutton(
+                            buttonTitle: 'Proceed to Dashboard',
+                            isEmpty: false,
+                            buttonFunction: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Signin(),
+                                ),
+                              );
+                            },
+                          )
+                        : Elevatedbutton(
+                            buttonTitle: 'Next',
+                            buttonFunction: () {
+                              _pageController.nextPage(
+                                duration: Duration(microseconds: 3),
+                                curve: Curves.bounceInOut,
+                              );
+                            },
+                          ),
                     SizedBox(height: 16.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -99,12 +111,41 @@ class _SignupState extends State<Signup> {
                                 ?.copyWith(fontWeight: FontWeight.w700),
                           ),
                         ),
-
                       ],
                     ),
                   ],
                 ),
               ),
+              if (!isFirstPage)
+                Positioned(
+                  top: 95.h,
+                  left: 24,
+                  child: Transform.translate(
+                    offset: Offset(-AppSpacing.lg, 0),
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.zero,
+                        minimumSize: Size(50, 30),
+                        alignment: Alignment.centerLeft,
+                      ),
+                      onPressed: () {
+                        _pageController.previousPage(
+                          duration: const Duration(milliseconds: 200),
+                          curve: Curves.bounceInOut,
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          const Icon(Icons.navigate_before_outlined, size: 20),
+                          Text(
+                            'Back',
+                            style: Theme.of(context).textTheme.labelLarge,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
             ],
           ),
         ),

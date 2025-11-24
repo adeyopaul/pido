@@ -42,6 +42,13 @@ class AppTextStyles {
     // height: 1.5,
   );
 
+static TextStyle hint2 = TextStyle(
+    fontFamily: fontFamily,
+    // fontSize: 11.sp,
+    fontWeight: FontWeight.w400,
+    // height: 1.5,
+  );
+
   static TextStyle button = TextStyle(
     fontFamily: fontFamily,
     fontSize: 16.sp,
