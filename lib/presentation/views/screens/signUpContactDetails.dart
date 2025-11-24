@@ -37,7 +37,7 @@ class Signupcontactdetails extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 6.h),
+            SizedBox(height: 30.h),
             Padding(
               padding: EdgeInsets.only(top: AppSpacing.md),
               child: Text(

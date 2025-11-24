@@ -120,6 +120,7 @@ class AppTheme {
         color: AppColors.textSecondaryDark,
       ),
       labelLarge: AppTextStyles.button,
+      labelSmall: AppTextStyles.hint2.copyWith(color: AppColors.borderActiveLight),
     ),
     // inputDecorationTheme: InputDecorationTheme(
     //   filled: true,
