@@ -42,6 +42,7 @@ class AppTheme {
       displayMedium: AppTextStyles.headline2.copyWith(
         color: AppColors.textPrimaryLight2,
       ),
+      displaySmall: AppTextStyles.body3.copyWith(color: Colors.black),
       bodyLarge: AppTextStyles.body1.copyWith(
         color: AppColors.textPrimaryLight,
       ),
@@ -51,22 +52,16 @@ class AppTheme {
       labelLarge: AppTextStyles.button.copyWith(
         color: AppColors.textPrimaryLight,
       ),
-      headlineLarge: AppTextStyles.body1.copyWith(color: AppColors.textSecondaryLight, height: 2.0),
-      headlineMedium: AppTextStyles.body1.copyWith(color: AppColors.textCardSubTitleLight),
+      headlineLarge: AppTextStyles.body1.copyWith(
+        color: AppColors.textSecondaryLight,
+        height: 2.0,
+      ),
+      headlineMedium: AppTextStyles.body1.copyWith(
+        color: AppColors.textCardSubTitleLight,
+      ),
+      headlineSmall: AppTextStyles.body4,
     ),
-    // inputDecorationTheme: InputDecorationTheme(
-    //   filled: true,
-    //   fillColor: AppColors.mainCardLight,
-    //   contentPadding: EdgeInsets.all(AppSpacing.md),
-    //   border: OutlineInputBorder(
-    //     borderRadius: BorderRadius.circular(AppRadius.medium),
-    //     borderSide: BorderSide(color: AppColors.borderTextFormLight),
-    //   ),
-    //   focusedBorder: OutlineInputBorder(
-    //     borderRadius: BorderRadius.circular(AppRadius.medium),
-    //     borderSide: BorderSide(color: AppColors.primaryColor),
-    //   ),
-    // ),
+
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.buttonPrimaryLight,
@@ -120,7 +115,9 @@ class AppTheme {
         color: AppColors.textSecondaryDark,
       ),
       labelLarge: AppTextStyles.button,
-      labelSmall: AppTextStyles.hint2.copyWith(color: AppColors.borderActiveLight),
+      labelSmall: AppTextStyles.hint2.copyWith(
+        color: AppColors.borderActiveLight,
+      ),
     ),
     // inputDecorationTheme: InputDecorationTheme(
     //   filled: true,

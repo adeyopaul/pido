@@ -1,0 +1,251 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pidoapp/core/constants/appColors.dart';
+import 'package:pidoapp/core/constants/appSizes.dart';
+import 'package:pidoapp/presentation/widgets/smallerButton.dart';
+
+import '../../widgets/appButton.dart';
+
+class Homescreen extends StatelessWidget {
+  const Homescreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    return Scaffold(
+      body: Stack(
+        children: [
+          Column(
+            children: [
+              Container(
+                height: height * 0.25,
+                color: AppColors.primaryColor,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(bottom: AppSpacing.xxl),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(
+                              top: AppSpacing.md,
+                              // bottom: AppSpacing.xxl,
+                              left: AppSpacing.lg,
+                            ),
+                            child: Container(
+                              width: 45.w,
+                              height: 45.h,
+                              decoration: BoxDecoration(
+                                color: AppColors.mainCardLight,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                Icons.person_outline,
+                                size: AppSpacing.xl,
+                                color: AppColors.iconSecondaryLight,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              top: AppSpacing.wl,
+                              left: AppSpacing.sm,
+                            ),
+                            child: Text(
+                              'Welcome, Adeyo',
+                              style: Theme.of(context).textTheme.labelLarge
+                                  ?.copyWith(
+                                    color: Theme.of(
+                                      context,
+                                    ).colorScheme.onPrimary,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        bottom: AppSpacing.xl,
+                        right: AppSpacing.lg,
+                      ),
+                      child: Icon(
+                        Icons.notifications_none_outlined,
+                        size: AppSpacing.xl,
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: height * 0.75,
+                color: AppColors.backgroundLight,
+              ),
+            ],
+          ),
+          Positioned(
+            top: height * 0.16,
+            left: AppSpacing.lg,
+            right: AppSpacing.lg,
+            child: Container(
+              height: height * 0.3,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                border: Border.all(color: AppColors.borderCardLight),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(AppRadius.small),
+                ),
+                color: AppColors.mainCardLight,
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: AppSpacing.md,
+                  vertical: AppSpacing.ms,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Balance',
+                          style: Theme.of(context).textTheme.displaySmall,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(AppRadius.medium),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: AppSpacing.xxs,
+                              horizontal: AppSpacing.sm,
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.visibility,
+                                  color: AppColors.textDisplaySmall,
+                                  size: AppIcons.ms,
+                                ),
+                                Text(
+                                  '  Show',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displaySmall
+                                      ?.copyWith(
+                                        color: AppColors.textDisplaySmall,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    RichText(
+                      text: TextSpan(
+                        style: Theme.of(context).textTheme.headlineMedium
+                            ?.copyWith(
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                        children: [
+                          TextSpan(
+                            text: 'NGN ',
+                            style: Theme.of(context).textTheme.headlineLarge
+                                ?.copyWith(color: AppColors.textPrimaryLight),
+                          ),
+                          TextSpan(
+                            text: '0.00',
+                            style: Theme.of(context).textTheme.headlineLarge
+                                ?.copyWith(
+                                  color: AppColors.textPrimaryLight,
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: AppSpacing.sm),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Account Number:',
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
+                          Text(
+                            '  2145809712',
+                            style: Theme.of(context).textTheme.headlineSmall
+                                ?.copyWith(fontWeight: FontWeight.w700),
+                          ),
+                          SizedBox(width: AppSpacing.ms),
+                          Icon(Icons.copy_outlined, size: AppIcons.md),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: AppSpacing.xl),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Smallerbutton(
+                          width: 134.w,
+                          height: 40.h,
+                          title: 'Add Money',
+                          onPressed: () {},
+                          buttonIcon: Icons.arrow_downward_outlined,
+                          isFilled: false,
+                        ),
+                        Smallerbutton(
+                          width: 134.w,
+                          height: 40.h,
+                          title: 'Send Money',
+                          onPressed: () {},
+                          buttonIcon: Icons.swap_horiz_outlined,
+                          isFilled: true,
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: AppSpacing.lg),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.keyboard_double_arrow_up,
+                          color: AppColors.primaryColor,
+                          size: AppIcons.lg,
+                        ),
+                        SizedBox(width: 12.w),
+                        Text(
+                          'Upgrade your account',
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                color: AppColors.textCardSubTitleLight,
+                              ),
+                        ),
+                        Spacer(),
+                        Icon(
+                          Icons.keyboard_arrow_right_outlined,
+                          color: AppColors.textBlue,
+                          size: AppIcons.lg,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
