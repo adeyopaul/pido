@@ -5,17 +5,71 @@ import 'package:pidoapp/core/constants/appSizes.dart';
 import 'package:pidoapp/presentation/widgets/moreActionCard.dart';
 import 'package:pidoapp/presentation/widgets/smallerButton.dart';
 
-import '../../widgets/appButton.dart';
-
-class Homescreen extends StatelessWidget {
+class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
 
   @override
+  State<Homescreen> createState() => _HomescreenState();
+}
+
+class _HomescreenState extends State<Homescreen> {
+  int selectedBottomNavIndex = 0;
+  @override
   Widget build(BuildContext context) {
+
+    void bottomBarChange(int index){
+      setState(() {
+        selectedBottomNavIndex = index;
+      });
+    }
     final Size screenSize = MediaQuery.of(context).size;
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedBottomNavIndex,
+        onTap: bottomBarChange,
+        backgroundColor: AppColors.mainCardLight,
+        elevation: 0,
+        selectedItemColor: AppColors.textBlue,
+        unselectedItemColor: AppColors.iconNotActiveNavLight,
+        selectedLabelStyle: TextStyle(
+          color: AppColors.buttonPrimaryLight,
+          fontWeight: FontWeight.w700,
+          fontSize: 12.sp,
+          height: 1.33.h,
+        ),
+        unselectedLabelStyle: TextStyle(
+          color: AppColors.iconNotActiveNavLight,
+          fontWeight: FontWeight.w700,
+          fontSize: 12.sp,
+          height: 1.33.h,
+        ),
+        unselectedIconTheme: IconThemeData(
+          color: AppColors.iconNotActiveNavLight,
+          size: 24.sp,
+        ),
+        selectedIconTheme: IconThemeData(
+          color: AppColors.textBlue,
+          size: 24.sp,
+        ),
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.swap_horiz_outlined),
+            label: 'Payments',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bar_chart),
+            label: 'Transactions',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            label: 'Profile',
+          ),
+        ],
+      ),
       body: Stack(
         children: [
           Column(
@@ -82,68 +136,77 @@ class Homescreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                height: height * 0.75,
-                color: AppColors.backgroundLight,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(top: height * 0.205),
-                        child: Text(
-                          'More Actions',
-                          style: Theme.of(context).textTheme.bodyMedium
-                              ?.copyWith(
-                                color: AppColors.textCardTitleLight,
-                                fontWeight: FontWeight.w500,
-                              ),
-                        ),
-                      ),
-                      SizedBox(height: 12.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Container(
+                    // height: height * 0.75,
+                    color: AppColors.backgroundLight,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Moreactioncard(
-                            title: 'Buy Airtime',
-                            cardIcon: Icons.phone_android_outlined,
-                          ),
-                          Moreactioncard(
-                            title: 'Buy Data',
-                            cardIcon: Icons.wifi,
-                          ),
-                          Moreactioncard(
-                            title: 'Pay Bills',
-                            cardIcon: Icons.event_note_outlined,
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10.h),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Recent Transactions',
+                          Padding(
+                            padding: EdgeInsets.only(top: height * 0.205),
+                            child: Text(
+                              'More Actions',
                               style: Theme.of(context).textTheme.bodyMedium
                                   ?.copyWith(
                                     color: AppColors.textCardTitleLight,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
-                            Text(
-                              'View all',
-                              style: Theme.of(context).textTheme.bodyMedium
-                                  ?.copyWith(
-                                    color: AppColors.primaryColor,
-                                    fontWeight: FontWeight.w900,
+                          ),
+                          SizedBox(height: 12.h),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Moreactioncard(
+                                title: 'Buy Airtime',
+                                cardIcon: Icons.phone_android_outlined,
+                              ),
+                              Moreactioncard(
+                                title: 'Buy Data',
+                                cardIcon: Icons.wifi,
+                              ),
+                              Moreactioncard(
+                                title: 'Pay Bills',
+                                cardIcon: Icons.event_note_outlined,
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10.h),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Recent Transactions',
+                                  style: Theme.of(context).textTheme.bodyMedium
+                                      ?.copyWith(
+                                        color: AppColors.textCardTitleLight,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Text(
+                                    'View all',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium
+                                        ?.copyWith(
+                                          color: AppColors.primaryColor,
+                                          fontWeight: FontWeight.w900,
+                                        ),
                                   ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),
@@ -154,7 +217,7 @@ class Homescreen extends StatelessWidget {
             left: AppSpacing.lg,
             right: AppSpacing.lg,
             child: Container(
-              height: height * 0.28,
+              // height: height * 0.28,
               width: double.infinity,
               decoration: BoxDecoration(
                 border: Border.all(color: AppColors.borderCardLight),
