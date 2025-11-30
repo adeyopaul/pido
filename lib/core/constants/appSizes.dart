@@ -17,14 +17,14 @@ class AppSpacing {
 }
 
 class AppIcons {
-  static double xs = 4.r;
-  static double sm = 8.r;
-  static double ms = 12.r;
-  static double md = 16.r;
-  static double wl = 18.r;
-  static double lg = 24.r;
-  static double xl = 32.r;
-  static double xxl = 48.r;
+  static double xs = 4.sp;
+  static double sm = 8.sp;
+  static double ms = 12.sp;
+  static double md = 16.sp;
+  static double wl = 18.sp;
+  static double lg = 24.sp;
+  static double xl = 32.sp;
+  static double xxl = 48.sp;
 }
 
 /// =======================================

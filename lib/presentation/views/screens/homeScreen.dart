@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pidoapp/core/constants/appColors.dart';
 import 'package:pidoapp/core/constants/appSizes.dart';
+import 'package:pidoapp/presentation/widgets/moreActionCard.dart';
 import 'package:pidoapp/presentation/widgets/smallerButton.dart';
 
 import '../../widgets/appButton.dart';
@@ -84,6 +85,67 @@ class Homescreen extends StatelessWidget {
               Container(
                 height: height * 0.75,
                 color: AppColors.backgroundLight,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: height * 0.205),
+                        child: Text(
+                          'More Actions',
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                color: AppColors.textCardTitleLight,
+                                fontWeight: FontWeight.w500,
+                              ),
+                        ),
+                      ),
+                      SizedBox(height: 12.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Moreactioncard(
+                            title: 'Buy Airtime',
+                            cardIcon: Icons.phone_android_outlined,
+                          ),
+                          Moreactioncard(
+                            title: 'Buy Data',
+                            cardIcon: Icons.wifi,
+                          ),
+                          Moreactioncard(
+                            title: 'Pay Bills',
+                            cardIcon: Icons.event_note_outlined,
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.h),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Recent Transactions',
+                              style: Theme.of(context).textTheme.bodyMedium
+                                  ?.copyWith(
+                                    color: AppColors.textCardTitleLight,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                            ),
+                            Text(
+                              'View all',
+                              style: Theme.of(context).textTheme.bodyMedium
+                                  ?.copyWith(
+                                    color: AppColors.primaryColor,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
@@ -92,7 +154,7 @@ class Homescreen extends StatelessWidget {
             left: AppSpacing.lg,
             right: AppSpacing.lg,
             child: Container(
-              height: height * 0.3,
+              height: height * 0.28,
               width: double.infinity,
               decoration: BoxDecoration(
                 border: Border.all(color: AppColors.borderCardLight),
@@ -193,7 +255,7 @@ class Homescreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: AppSpacing.xl),
+                    SizedBox(height: AppSpacing.lg),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -215,7 +277,7 @@ class Homescreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: AppSpacing.lg),
+                    SizedBox(height: AppSpacing.md),
                     Row(
                       children: [
                         Icon(
