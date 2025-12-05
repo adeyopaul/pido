@@ -59,7 +59,7 @@ class AppTextStyles {
   static TextStyle hint2 = TextStyle(
     fontFamily: fontFamily,
     // fontSize: 11.sp,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
     // height: 1.5,
   );
 

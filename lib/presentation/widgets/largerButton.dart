@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:pidoapp/core/constants/appColors.dart';
-import 'package:pidoapp/core/constants/appSizes.dart';
 
-class Smallerbutton extends StatelessWidget {
+import '../../core/constants/appColors.dart';
+import '../../core/constants/appSizes.dart';
+
+class Largerbutton extends StatelessWidget {
   final double width;
   final double height;
   final String title;
@@ -12,7 +13,7 @@ class Smallerbutton extends StatelessWidget {
   final VoidCallback onPressed;
   final IconData buttonIcon;
 
-  const Smallerbutton({
+  const Largerbutton({
     super.key,
     required this.width,
     required this.height,
@@ -41,7 +42,7 @@ class Smallerbutton extends StatelessWidget {
         ),
         onPressed: onPressed,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FaIcon(
               buttonIcon,
@@ -50,6 +51,7 @@ class Smallerbutton extends StatelessWidget {
                   ? AppColors.backgroundLight
                   : AppColors.primaryColor,
             ),
+            SizedBox(width: 8.w,),
             Text(
               title,
               style: isFilled

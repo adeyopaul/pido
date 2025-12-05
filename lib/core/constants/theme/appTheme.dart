@@ -84,9 +84,9 @@ class AppTheme {
       primary: AppColors.primaryColor,
       onPrimary: Colors.white,
       brightness: Brightness.dark,
-      secondary: AppColors.backgroundDark, // #48A0FF
+      secondary: AppColors.backgroundDark,
       onSecondary: Colors.white,
-      tertiary: Color(0xFF2D936C), // transferCard
+      tertiary: Color(0xFF2D936C),
       onTertiary: Colors.white,
       tertiaryContainer: Color(0xFF1F5D46),
       onTertiaryContainer: Color(0xFFCFFDE1),
