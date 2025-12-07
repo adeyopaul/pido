@@ -33,12 +33,12 @@ class Largerbutton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             side: isFilled
                 ? BorderSide.none
-                : BorderSide(color: AppColors.borderTextFormLight),
-            borderRadius: BorderRadius.circular(AppRadius.xsmall),
+                : BorderSide(color: AppColors.borderLargerButton),
+            borderRadius: BorderRadius.circular(AppRadius.small),
           ),
           backgroundColor: isFilled
               ? AppColors.buttonPrimaryLight
-              : AppColors.backgroundLight,
+              : AppColors.largeButton,
         ),
         onPressed: onPressed,
         child: Row(

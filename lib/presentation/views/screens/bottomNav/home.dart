@@ -644,11 +644,8 @@ class _HomeState extends State<Home> {
                                 onPressed: () {
                                   showModalBottomSheet(
                                     context: context,
-                                    isScrollControlled:
-                                        true, // Keep this, it's important
-                                    // Add these for a better look and feel
-                                    backgroundColor: Colors
-                                        .transparent, // Make parent transparent for custom shape
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.vertical(
                                         top: Radius.circular(AppRadius.medium),
@@ -665,15 +662,15 @@ class _HomeState extends State<Home> {
                                             ),
                                           ),
                                         ),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            //Fund account Text
-                                            Padding(
-                                              padding: EdgeInsets.all(
-                                                AppSpacing.lg,
-                                              ),
-                                              child: Row(
+                                        child: Padding(
+                                          padding: EdgeInsets.all(
+                                            AppSpacing.lg,
+                                          ),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              //Fund account Text
+                                              Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
@@ -698,28 +695,164 @@ class _HomeState extends State<Home> {
                                                   ),
                                                 ],
                                               ),
-                                            ),
 
-                                            //Bank Name Row
-                                            Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.food_bank_outlined,
-                                                  size: AppIcons.md,
-                                                ),
-                                                Text('Bank Name'),
-                                                Text('Pido'),
-                                              ],
-                                            ),
-                                            Largerbutton(
-                                              width: double.infinity,
-                                              height: 51.h,
-                                              title: 'Share Detials',
-                                              isFilled: false,
-                                              onPressed: () {},
-                                              buttonIcon: Icons.ios_share_sharp,
-                                            ),
-                                          ],
+                                              //Spacing
+                                              SizedBox(
+                                                height: 24.h,
+                                              ),
+
+                                              //Bank Name Row
+                                              Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.food_bank_outlined,
+                                                    size: AppIcons.md,
+                                                  ),
+                                                  SizedBox(width: 16.w),
+                                                  Container(
+                                                    width: 102.w,
+                                                    child: Text(
+                                                      'Bank Name',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .displaySmall
+                                                          ?.copyWith(
+                                                            color: AppColors
+                                                                .primaryColor,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                      left: 2.w,
+                                                    ),
+                                                    child: Text(
+                                                      'Pido',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .bodyMedium
+                                                          ?.copyWith(
+                                                            color: AppColors
+                                                                .primaryColor,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(height: 16.h),
+                                                ],
+                                              ),
+
+                                              //Account Number
+                                              Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.numbers,
+                                                    size: AppIcons.md,
+                                                  ),
+                                                  SizedBox(width: 16.w),
+                                                  Container(
+                                                    width: 102.w,
+                                                    child: Text(
+                                                      'Account Number',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .displaySmall
+                                                          ?.copyWith(
+                                                            color: AppColors
+                                                                .primaryColor,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                      left: 2.w,
+                                                    ),
+                                                    child: Text(
+                                                      '1234567890',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .bodyMedium
+                                                          ?.copyWith(
+                                                            color: AppColors
+                                                                .primaryColor,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  IconButton(
+                                                    onPressed: () {},
+                                                    icon: Icon(Icons.copy, size: AppIcons.md,),
+                                                  ),
+                                                  SizedBox(height: 16.h),
+                                                ],
+                                              ),
+
+                                              //Account Name
+                                              Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.person_outline,
+                                                    size: AppIcons.md,
+                                                  ),
+                                                  SizedBox(width: 16.w),
+                                                  Container(
+                                                    width: 102.w,
+                                                    child: Text(
+                                                      'Account Name',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .displaySmall
+                                                          ?.copyWith(
+                                                            color: AppColors
+                                                                .primaryColor,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                      left: 2.w,
+                                                    ),
+                                                    child: Text(
+                                                      'Adeyo Paul',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .bodyMedium
+                                                          ?.copyWith(
+                                                            color: AppColors
+                                                                .primaryColor,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(height: 16.h),
+                                                ],
+                                              ),
+
+                                              //Spacing down
+                                              SizedBox(
+                                                height: 24.h,
+                                              ),
+
+                                              //Share Button
+                                              Largerbutton(
+                                                width: double.infinity,
+                                                height: 51.h,
+                                                title: 'Share Detials',
+                                                isFilled: false,
+                                                onPressed: () {},
+                                                buttonIcon:
+                                                    Icons.ios_share_sharp,
+                                              ),
+
+                                              //Spacing down
+                                              SizedBox(
+                                                height: 32.h,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       );
                                     },
