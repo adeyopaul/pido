@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pidoapp/core/constants/theme/textTheme.dart';
+import 'package:pidoapp/presentation/views/screens/notifications.dart';
 import 'package:pidoapp/presentation/widgets/largerButton.dart';
 import 'package:pidoapp/presentation/widgets/transactionsListTile.dart';
 
@@ -123,14 +124,20 @@ class _HomeState extends State<Home> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Moreactioncard(
+                                      width: 96.w,
+                                      height: 80.h,
                                       title: 'Buy Airtime',
                                       cardIcon: Icons.phone_android_outlined,
                                     ),
                                     Moreactioncard(
+                                      width: 96.w,
+                                      height: 80.h,
                                       title: 'Buy Data',
                                       cardIcon: Icons.wifi,
                                     ),
                                     Moreactioncard(
+                                      width: 96.w,
+                                      height: 80.h,
                                       title: 'Pay Bills',
                                       cardIcon: Icons.event_note_outlined,
                                     ),
@@ -396,10 +403,20 @@ class _HomeState extends State<Home> {
                               bottom: AppSpacing.xl,
                               right: AppSpacing.lg,
                             ),
-                            child: Icon(
-                              Icons.notifications_none_outlined,
-                              size: AppSpacing.xl,
-                              color: Theme.of(context).colorScheme.onPrimary,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Notifications(),
+                                  ),
+                                );
+                              },
+                              child: Icon(
+                                Icons.notifications_none_outlined,
+                                size: AppSpacing.xl,
+                                color: Theme.of(context).colorScheme.onPrimary,
+                              ),
                             ),
                           ),
                         ],
@@ -436,14 +453,20 @@ class _HomeState extends State<Home> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Moreactioncard(
+                                      width: 96.w,
+                                      height: 80.h,
                                       title: 'Buy Airtime',
                                       cardIcon: Icons.phone_android_outlined,
                                     ),
                                     Moreactioncard(
+                                      width: 96.w,
+                                      height: 80.h,
                                       title: 'Buy Data',
                                       cardIcon: Icons.wifi,
                                     ),
                                     Moreactioncard(
+                                      width: 96.w,
+                                      height: 80.h,
                                       title: 'Pay Bills',
                                       cardIcon: Icons.event_note_outlined,
                                     ),
@@ -697,9 +720,7 @@ class _HomeState extends State<Home> {
                                               ),
 
                                               //Spacing
-                                              SizedBox(
-                                                height: 24.h,
-                                              ),
+                                              SizedBox(height: 24.h),
 
                                               //Bank Name Row
                                               Row(
@@ -783,7 +804,10 @@ class _HomeState extends State<Home> {
                                                   ),
                                                   IconButton(
                                                     onPressed: () {},
-                                                    icon: Icon(Icons.copy, size: AppIcons.md,),
+                                                    icon: Icon(
+                                                      Icons.copy,
+                                                      size: AppIcons.md,
+                                                    ),
                                                   ),
                                                   SizedBox(height: 16.h),
                                                 ],
@@ -832,9 +856,7 @@ class _HomeState extends State<Home> {
                                               ),
 
                                               //Spacing down
-                                              SizedBox(
-                                                height: 24.h,
-                                              ),
+                                              SizedBox(height: 24.h),
 
                                               //Share Button
                                               Largerbutton(
@@ -848,9 +870,7 @@ class _HomeState extends State<Home> {
                                               ),
 
                                               //Spacing down
-                                              SizedBox(
-                                                height: 32.h,
-                                              ),
+                                              SizedBox(height: 32.h),
                                             ],
                                           ),
                                         ),

@@ -45,6 +45,7 @@ class AppColors {
 
   //App Border Colors
   static const Color borderTextFormLight = Color(0xFFCEDEFF);
+  static const Color borderTextFormLight2 = Color(0xFF707071);
   static const Color borderTextFormDark = Color(0xFF3C4A66);
   static const Color borderCardLight = Color(0xFFE4EEFF);
   static const Color borderCardDark = Color(0xFF2F3238);

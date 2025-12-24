@@ -60,7 +60,7 @@ class _HomescreenState extends State<Homescreen> {
             label: 'Payments',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart),
+            icon: Icon(Icons.bar_chart_outlined),
             label: 'Transactions',
           ),
           BottomNavigationBarItem(
