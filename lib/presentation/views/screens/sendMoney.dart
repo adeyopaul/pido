@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pidoapp/core/constants/appColors.dart';
+import 'package:pidoapp/core/constants/theme/textTheme.dart';
+import 'package:pidoapp/presentation/views/screens/confirmDetails.dart';
 
 import '../../../core/constants/appSizes.dart';
 import '../../widgets/appButton.dart';
@@ -11,6 +13,7 @@ class Sendmoney extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final PageController sendMoneyController = PageController();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -22,7 +25,8 @@ class Sendmoney extends StatelessWidget {
         centerTitle: true,
       ),
       body: PageView(
-        // physics: NeverScrollableScrollPhysics(),
+        controller: sendMoneyController,
+        physics: NeverScrollableScrollPhysics(),
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
@@ -33,7 +37,9 @@ class Sendmoney extends StatelessWidget {
                   padding: EdgeInsets.only(top: AppSpacing.md),
                   child: Text(
                     'Account Number',
-                    style: Theme.of(context).textTheme.headlineMedium,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.headlineMedium?.copyWith(fontSize: 14.sp),
                   ),
                 ),
                 Padding(
@@ -51,7 +57,9 @@ class Sendmoney extends StatelessWidget {
                   padding: EdgeInsets.only(top: AppSpacing.ms),
                   child: Text(
                     'Account Bank',
-                    style: Theme.of(context).textTheme.headlineMedium,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.headlineMedium?.copyWith(fontSize: 14.sp),
                   ),
                 ),
                 Padding(
@@ -68,7 +76,12 @@ class Sendmoney extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: 150.h),
                   child: Elevatedbutton(
                     buttonTitle: 'Proceed',
-                    buttonFunction: () {},
+                    buttonFunction: () {
+                      sendMoneyController.nextPage(
+                        duration: Duration(milliseconds: 20),
+                        curve: Curves.bounceInOut,
+                      );
+                    },
                   ),
                 ),
               ],
@@ -83,7 +96,9 @@ class Sendmoney extends StatelessWidget {
                   padding: EdgeInsets.only(top: AppSpacing.md),
                   child: Text(
                     'Account Number',
-                    style: Theme.of(context).textTheme.headlineMedium,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.headlineMedium?.copyWith(fontSize: 14.sp),
                   ),
                 ),
                 Padding(
@@ -96,12 +111,14 @@ class Sendmoney extends StatelessWidget {
                     isPassword: false,
                   ),
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 5.h),
                 Padding(
                   padding: EdgeInsets.only(top: AppSpacing.md),
                   child: Text(
-                    'Account Number',
-                    style: Theme.of(context).textTheme.headlineMedium,
+                    'Account Bank',
+                    style: Theme.of(
+                      context,
+                    ).textTheme.headlineMedium?.copyWith(fontSize: 14.sp),
                   ),
                 ),
                 Padding(
@@ -109,17 +126,47 @@ class Sendmoney extends StatelessWidget {
                     top: AppSpacing.sm,
                     // bottom: AppSpacing.ms,
                   ),
-                  child: Textformfield(
-                    title: 'Enter recipient Account Number',
-                    isPassword: false,
-                  ),
+                  child: Textformfield(title: 'Select Bank', isPassword: false),
                 ),
-                SizedBox(height: 20.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [Text('Adeyo Paul')],
+                ),
                 Padding(
                   padding: EdgeInsets.only(top: AppSpacing.md),
-                  child: Text(
-                    'Account Number',
-                    style: Theme.of(context).textTheme.headlineMedium,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Amount',
+                        style: Theme.of(
+                          context,
+                        ).textTheme.headlineMedium?.copyWith(fontSize: 14.sp),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          style: Theme.of(context).textTheme.headlineMedium
+                              ?.copyWith(
+                                color: AppColors.primaryColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                          children: [
+                            TextSpan(
+                              text: 'Balance ',
+                              style: Theme.of(context).textTheme.headlineMedium
+                                  ?.copyWith(fontSize: 14.sp),
+                            ),
+                            TextSpan(
+                              text: 'NGN: 200,000.00',
+                              style: AppTextStyles.hint2.copyWith(
+                                fontSize: 13,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Padding(
@@ -128,16 +175,18 @@ class Sendmoney extends StatelessWidget {
                     // bottom: AppSpacing.ms,
                   ),
                   child: Textformfield(
-                    title: 'Enter recipient Account Number',
+                    title: 'How much do you want to transfer',
                     isPassword: false,
                   ),
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 5.h),
                 Padding(
                   padding: EdgeInsets.only(top: AppSpacing.ms),
                   child: Text(
-                    'Account Bank',
-                    style: Theme.of(context).textTheme.headlineMedium,
+                    'Narration',
+                    style: Theme.of(
+                      context,
+                    ).textTheme.headlineMedium?.copyWith(fontSize: 14.sp),
                   ),
                 ),
                 Padding(
@@ -145,7 +194,10 @@ class Sendmoney extends StatelessWidget {
                     top: AppSpacing.sm,
                     bottom: AppSpacing.ms,
                   ),
-                  child: Textformfield(title: 'Select Bank', isPassword: false),
+                  child: Textformfield(
+                    title: 'Message for recipient',
+                    isPassword: false,
+                  ),
                 ),
 
                 Spacer(),
@@ -154,7 +206,14 @@ class Sendmoney extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: 150.h),
                   child: Elevatedbutton(
                     buttonTitle: 'Proceed',
-                    buttonFunction: () {},
+                    buttonFunction: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Confirmdetails(),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],

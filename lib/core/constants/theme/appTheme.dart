@@ -33,6 +33,7 @@ class AppTheme {
       backgroundColor: AppColors.backgroundLight,
       foregroundColor: AppColors.textPrimaryLight,
       titleTextStyle: AppTextStyles.headline2,
+      centerTitle: true,
     ),
     textTheme: TextTheme(
       labelSmall: AppTextStyles.hint1.copyWith(color: AppColors.textHintLight),
