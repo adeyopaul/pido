@@ -31,14 +31,12 @@ class CircularStepIndicator extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          /// Background Circle
           CircularProgressIndicator(
             value: 1,
             strokeWidth: strokeWidth,
             valueColor: AlwaysStoppedAnimation(backgroundColor),
           ),
 
-          /// Active Progress Circle
           CircularProgressIndicator(
             value: progress,
             strokeWidth: strokeWidth,
@@ -46,7 +44,6 @@ class CircularStepIndicator extends StatelessWidget {
             backgroundColor: Colors.transparent,
           ),
 
-          /// Inner Circle (same logic as CircleAvatar radius)
           CircleAvatar(
             radius: innerRadius, // 15.36
             backgroundColor: Colors.white,

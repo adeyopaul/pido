@@ -1,0 +1,72 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../core/constants/appColors.dart';
+import '../../core/constants/appSizes.dart';
+
+class Largerbutton extends StatelessWidget {
+  final double width;
+  final double height;
+  final String title;
+  final bool isFilled;
+  final VoidCallback onPressed;
+  final IconData buttonIcon;
+
+  const Largerbutton({
+    super.key,
+    required this.width,
+    required this.height,
+    required this.title,
+    required this.isFilled,
+    required this.onPressed,
+    required this.buttonIcon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: height,
+      child: FilledButton(
+        style: FilledButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            side: isFilled
+                ? BorderSide.none
+                : BorderSide(color: AppColors.borderLargerButton),
+            borderRadius: BorderRadius.circular(AppRadius.small),
+          ),
+          backgroundColor: isFilled
+              ? AppColors.buttonPrimaryLight
+              : AppColors.largeButton,
+        ),
+        onPressed: onPressed,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            FaIcon(
+              buttonIcon,
+              size: AppIcons.md,
+              color: isFilled
+                  ? AppColors.backgroundLight
+                  : AppColors.primaryColor,
+            ),
+            SizedBox(width: 8.w,),
+            Text(
+              title,
+              style: isFilled
+                  ? Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      color: AppColors.backgroundLight,
+                      fontWeight: FontWeight.w600,
+                    )
+                  : Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      color: AppColors.primaryColor,
+                      fontWeight: FontWeight.w600,
+                    ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
