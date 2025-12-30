@@ -12,51 +12,46 @@ class Elevatedbutton extends StatelessWidget {
   final bool isFilled;
   final bool isEmpty;
   final String? imageIcon;
-  final VoidCallback buttonFunction;
+  final VoidCallback? buttonFunction;
+  final bool isEnabled;
 
   const Elevatedbutton({
     super.key,
     required this.buttonTitle,
-    required this.buttonFunction,
+    this.buttonFunction,
     this.buttonWidth,
     this.buttonHeight,
     this.isFilled = true,
     this.color,
     this.isEmpty = false,
     this.imageIcon,
+    this.isEnabled = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    final Color backgroundColor = AppColors.buttonPrimaryLight;
-    // if (isEmpty && isFilled) {
-    //   backgroundColor = Color(AppColors.buttonPrimaryLight as int);
-    // } else if (isFilled && !isEmpty) {
-    //   backgroundColor = color ?? AppColors.buttonPrimaryLight;
-    // } else {
-    //   backgroundColor = Colors.transparent;
-    // }
-    final Color titleColor = AppColors.textPrimaryDark;
-    // if (isEmpty && isFilled) {
-    //   titleColor = AppColors.textHintLight;
-    // } else if (isFilled && !isEmpty) {
-    //   titleColor = color ?? AppColors.textPrimaryDark;
-    // } else {
-    //   titleColor = AppColors.textSecondaryDark;
-    // }
+    final Color backgroundColor = isEnabled
+        ? (color ?? AppColors.buttonPrimaryLight)
+        : AppColors.buttonPrimaryLight.withOpacity(0.4);
+
+    final Color titleColor = isEnabled
+        ? AppColors.textPrimaryDark
+        : AppColors.textPrimaryDark.withOpacity(0.5);
+
     final Color borderColor = isFilled
         ? Colors.transparent
         : (color ?? AppColors.textSecondaryLight);
-    final scaffoldColor = Theme.of(context).scaffoldBackgroundColor;
-    return Container(
+
+    return SizedBox(
       width: buttonWidth,
-      height: 51.h,
+      height: buttonHeight ?? 51.h,
       child: ElevatedButton(
-        onPressed: buttonFunction,
+        onPressed: isEnabled ? buttonFunction : null,
         style: ElevatedButton.styleFrom(
+          elevation: isEnabled ? 0 : 0,
           backgroundColor: backgroundColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(AppRadius.small)),
+            borderRadius: BorderRadius.circular(AppRadius.small),
             side: BorderSide(color: borderColor, width: 1),
           ),
         ),
@@ -69,7 +64,13 @@ class Elevatedbutton extends StatelessWidget {
                 Image.asset(imageIcon!, height: 20.h, width: 20.w),
                 SizedBox(width: 8.w),
               ],
-              Text(buttonTitle, style: TextStyle(color: titleColor, fontWeight: FontWeight.w700)),
+              Text(
+                buttonTitle,
+                style: TextStyle(
+                  color: titleColor,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
             ],
           ),
         ),

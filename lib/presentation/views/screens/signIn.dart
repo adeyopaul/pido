@@ -6,6 +6,7 @@ import 'package:pidoapp/core/constants/appSizes.dart';
 import 'package:pidoapp/core/constants/images.dart';
 import 'package:pidoapp/core/constants/theme/textTheme.dart';
 import 'package:pidoapp/presentation/views/screens/forgottenPassword.dart';
+import 'package:pidoapp/presentation/views/screens/homeScreen.dart';
 import 'package:pidoapp/presentation/views/screens/signUp.dart';
 import 'package:pidoapp/presentation/widgets/appButton.dart';
 import 'package:pidoapp/presentation/widgets/textFormField.dart';
@@ -119,7 +120,16 @@ class Signin extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 32.h),
-                    Elevatedbutton(buttonTitle: 'Login', buttonFunction: () {}),
+                    Elevatedbutton(
+                      buttonTitle: 'Login',
+                      buttonFunction: () {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => Homescreen()),
+                          (route) => false,
+                        );
+                      },
+                    ),
                     SizedBox(height: 16.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -129,13 +139,11 @@ class Signin extends StatelessWidget {
                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
                         GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             Navigator.pushAndRemoveUntil(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => Signup(),
-                              ),
-                                  (Route<dynamic> route) => false,
+                              MaterialPageRoute(builder: (context) => Signup()),
+                              (Route<dynamic> route) => false,
                             );
                           },
                           child: Text(

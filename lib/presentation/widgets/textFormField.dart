@@ -35,7 +35,7 @@ class _TextformfieldState extends State<Textformfield> {
         obscureText: widget.isPassword ? _obscure : false,
         decoration: InputDecoration(
           hintText: widget.title,
-          hintStyle: Theme.of(context).textTheme.labelSmall,
+          hintStyle: Theme.of(context).textTheme.labelSmall?.copyWith(fontSize: 13.sp),
           border: InputBorder.none,
           contentPadding: EdgeInsets.symmetric(
             horizontal: AppSpacing.md

@@ -31,8 +31,22 @@ class AppTextStyles {
   static TextStyle body2 = TextStyle(
     fontFamily: fontFamily,
     fontSize: 14.sp,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
     height: 2.28,
+  );
+
+  static TextStyle body3 = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    height: 1.2,
+  );
+
+  static TextStyle body4 = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w300,
+    height: 1.2,
   );
 
   static TextStyle hint1 = TextStyle(
@@ -42,10 +56,10 @@ class AppTextStyles {
     // height: 1.5,
   );
 
-static TextStyle hint2 = TextStyle(
+  static TextStyle hint2 = TextStyle(
     fontFamily: fontFamily,
     // fontSize: 11.sp,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
     // height: 1.5,
   );
 

@@ -14,6 +14,7 @@ class AppColors {
   //App Surface and Cards
   static const Color mainCardLight = Color(0xFFF9FBFF);
   static const Color mainCardDark = Color(0xFF2A2C31);
+  static const Color largeButton = Color(0xFFF8FAFF);
   static const Color warning = Color(0xFFFFFAEB);
   static const Color transferCard = Color(0xFF2D936C);
   static const Color withdrawalCard = Color(0xFF1098F7);
@@ -34,6 +35,7 @@ class AppColors {
   static const Color textLabelDark = Color(0xFF6E6E6E);
   static const Color textHintLight = Color(0xFF667085);
   static const Color textHintDark = Color(0xFF98A1B2);
+  static const Color textDisplaySmall = Color(0xFFF6F9FF);
   static const Color textNotActiveNavLight = Color(0xFFD8D8D9);
   static const Color textNotActiveNavDark = Color(0xFF6C6F75);
   static const Color textError = Color(0xFFFF4848);
@@ -43,13 +45,15 @@ class AppColors {
 
   //App Border Colors
   static const Color borderTextFormLight = Color(0xFFCEDEFF);
+  static const Color borderTextFormLight2 = Color(0xFF707071);
   static const Color borderTextFormDark = Color(0xFF3C4A66);
-  static const Color borderCardLight = Color(0xFF191B20);
+  static const Color borderCardLight = Color(0xFFE4EEFF);
   static const Color borderCardDark = Color(0xFF2F3238);
   static const Color borderActiveLight = Color(0xFF12274F);
   static const Color borderActiveDark = Color(0xFF3A5AA6);
   static const Color divider = Color(0xFF2F3238);
   static const Color borderError = Color(0xFFFF4848);
+  static const Color borderLargerButton = Color(0x33191B20);
 
 
   //App Icons Colors

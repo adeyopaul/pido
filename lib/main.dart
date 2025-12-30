@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pidoapp/presentation/views/screens/homeScreen.dart';
 import 'package:pidoapp/presentation/views/screens/splashScreen.dart';
 import 'package:pidoapp/routes/appRoutes.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Flutter ScreenUtil Demo',
           debugShowCheckedModeBanner: false,
-          home: Splashscreen(),
+          home: Homescreen(),
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.system,
