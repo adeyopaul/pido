@@ -14,6 +14,7 @@ class AppSpacing {
   static double lg = 24.r;
   static double xl = 32.r;
   static double xxl = 48.r;
+  static double xxxl = 58.r;
 }
 
 class AppIcons {
