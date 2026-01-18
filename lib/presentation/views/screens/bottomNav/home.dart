@@ -45,7 +45,8 @@ class _HomeState extends State<Home> {
                         children: [
                           Padding(
                             padding: EdgeInsets.only(bottom: AppSpacing.xxl),
-                            child: Row(
+                            child:
+                            Row(
                               children: [
                                 Padding(
                                   padding: EdgeInsets.only(
