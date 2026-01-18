@@ -15,6 +15,7 @@ import '../../../widgets/moreActionCard.dart';
 import '../../../widgets/smallerButton.dart';
 import '../airtime.dart';
 import '../sendMoney.dart';
+import '../transactionDetials.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -230,13 +231,53 @@ class _HomeState extends State<Home> {
                                 Container(
                                   child: Column(
                                     children: [
-                                      Transactionslisttile(),
+                                      Transactionslisttile(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Transactiondetials(),
+                                            ),
+                                          );
+                                        },
+                                      ),
                                       SizedBox(height: 8.h),
-                                      Transactionslisttile(),
+                                      Transactionslisttile(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Transactiondetials(),
+                                            ),
+                                          );
+                                        },
+                                      ),
                                       SizedBox(height: 8.h),
-                                      Transactionslisttile(),
+                                      Transactionslisttile(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Transactiondetials(),
+                                            ),
+                                          );
+                                        },
+                                      ),
                                       SizedBox(height: 8.h),
-                                      Transactionslisttile(),
+                                      Transactionslisttile(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Transactiondetials(),
+                                            ),
+                                          );
+                                        },
+                                      ),
                                       SizedBox(height: 8.h),
                                     ],
                                   ),
@@ -364,12 +405,12 @@ class _HomeState extends State<Home> {
                                 GestureDetector(
                                   onTap: () {
                                     Fluttertoast.showToast(
-                                        msg: "Account Number copied!",
-                                        toastLength: Toast.LENGTH_SHORT,
-                                        gravity: ToastGravity.TOP_RIGHT,
-                                        timeInSecForIosWeb: 5,
-                                        textColor: Colors.white,
-                                        fontSize: 12.0
+                                      msg: "Account Number copied!",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.TOP_RIGHT,
+                                      timeInSecForIosWeb: 5,
+                                      textColor: Colors.white,
+                                      fontSize: 12.0,
                                     );
                                   },
                                   child: Icon(

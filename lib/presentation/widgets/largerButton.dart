@@ -11,7 +11,7 @@ class Largerbutton extends StatelessWidget {
   final String title;
   final bool isFilled;
   final VoidCallback onPressed;
-  final IconData buttonIcon;
+  final IconData? buttonIcon;
 
   const Largerbutton({
     super.key,
@@ -20,12 +20,13 @@ class Largerbutton extends StatelessWidget {
     required this.title,
     required this.isFilled,
     required this.onPressed,
-    required this.buttonIcon,
+    this.buttonIcon,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return
+      Container(
       width: width,
       height: height,
       child: FilledButton(
@@ -51,7 +52,7 @@ class Largerbutton extends StatelessWidget {
                   ? AppColors.backgroundLight
                   : AppColors.primaryColor,
             ),
-            SizedBox(width: 8.w,),
+            SizedBox(width: 8.w),
             Text(
               title,
               style: isFilled

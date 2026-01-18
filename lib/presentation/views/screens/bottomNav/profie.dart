@@ -7,17 +7,17 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final height = size.height;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Profile',
-          style: Theme.of(
-            context,
-          ).textTheme.labelLarge?.copyWith(color: AppColors.textPrimaryLight),
+      backgroundColor: AppColors.primaryColor,
+      body: Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          height: height * 0.8,
+          color: AppColors.backgroundLight,
         ),
-        centerTitle: true,
       ),
-      body: Center(child: Text('Profile')),
     );
   }
 }
