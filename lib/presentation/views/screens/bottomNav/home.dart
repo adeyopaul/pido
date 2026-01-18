@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pidoapp/core/constants/theme/textTheme.dart';
+import 'package:pidoapp/presentation/views/screens/bottomNav/profie.dart';
+import 'package:pidoapp/presentation/views/screens/buyData.dart';
 import 'package:pidoapp/presentation/views/screens/notifications.dart';
+import 'package:pidoapp/presentation/views/screens/payBills.dart';
 import 'package:pidoapp/presentation/widgets/largerButton.dart';
 import 'package:pidoapp/presentation/widgets/transactionsListTile.dart';
 
@@ -9,6 +13,8 @@ import '../../../../core/constants/appColors.dart';
 import '../../../../core/constants/appSizes.dart';
 import '../../../widgets/moreActionCard.dart';
 import '../../../widgets/smallerButton.dart';
+import '../airtime.dart';
+import '../sendMoney.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -18,15 +24,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final bool containTransactions = false;
+  final bool containTransactions = true;
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery.of(context).size;
-    final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: containTransactions
-          ? Stack(
+          ?
+            //contain Transactions
+            Stack(
               children: [
                 Column(
                   children: [
@@ -46,17 +52,27 @@ class _HomeState extends State<Home> {
                                     // bottom: AppSpacing.xxl,
                                     left: AppSpacing.lg,
                                   ),
-                                  child: Container(
-                                    width: 45.w,
-                                    height: 45.h,
-                                    decoration: BoxDecoration(
-                                      color: AppColors.mainCardLight,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Icon(
-                                      Icons.person_outline,
-                                      size: AppSpacing.xl,
-                                      color: AppColors.iconSecondaryLight,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Profile(),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      width: 45.w,
+                                      height: 45.h,
+                                      decoration: BoxDecoration(
+                                        color: AppColors.mainCardLight,
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Icon(
+                                        Icons.person_outline,
+                                        size: AppSpacing.xl,
+                                        color: AppColors.iconSecondaryLight,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -85,10 +101,20 @@ class _HomeState extends State<Home> {
                               bottom: AppSpacing.xl,
                               right: AppSpacing.lg,
                             ),
-                            child: Icon(
-                              Icons.notifications_none_outlined,
-                              size: AppSpacing.xl,
-                              color: Theme.of(context).colorScheme.onPrimary,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Notifications(),
+                                  ),
+                                );
+                              },
+                              child: Icon(
+                                Icons.notifications_none_outlined,
+                                size: AppSpacing.xl,
+                                color: Theme.of(context).colorScheme.onPrimary,
+                              ),
                             ),
                           ),
                         ],
@@ -128,18 +154,42 @@ class _HomeState extends State<Home> {
                                       height: 80.h,
                                       title: 'Buy Airtime',
                                       cardIcon: Icons.phone_android_outlined,
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Airtime(),
+                                          ),
+                                        );
+                                      },
                                     ),
                                     Moreactioncard(
                                       width: 96.w,
                                       height: 80.h,
                                       title: 'Buy Data',
                                       cardIcon: Icons.wifi,
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Buydata(),
+                                          ),
+                                        );
+                                      },
                                     ),
                                     Moreactioncard(
                                       width: 96.w,
                                       height: 80.h,
                                       title: 'Pay Bills',
                                       cardIcon: Icons.event_note_outlined,
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Paybills(),
+                                          ),
+                                        );
+                                      },
                                     ),
                                   ],
                                 ),
@@ -311,7 +361,22 @@ class _HomeState extends State<Home> {
                                       ?.copyWith(fontWeight: FontWeight.w700),
                                 ),
                                 SizedBox(width: AppSpacing.ms),
-                                Icon(Icons.copy_outlined, size: AppIcons.md),
+                                GestureDetector(
+                                  onTap: () {
+                                    Fluttertoast.showToast(
+                                        msg: "Account Number copied!",
+                                        toastLength: Toast.LENGTH_SHORT,
+                                        gravity: ToastGravity.TOP_RIGHT,
+                                        timeInSecForIosWeb: 5,
+                                        textColor: Colors.white,
+                                        fontSize: 12.0
+                                    );
+                                  },
+                                  child: Icon(
+                                    Icons.copy_outlined,
+                                    size: AppIcons.md,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -323,7 +388,220 @@ class _HomeState extends State<Home> {
                                 width: 134.w,
                                 height: 40.h,
                                 title: 'Add Money',
-                                onPressed: () {},
+                                onPressed: () {
+                                  showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.vertical(
+                                        top: Radius.circular(AppRadius.medium),
+                                      ),
+                                    ),
+                                    builder: (context) {
+                                      return Container(
+                                        width: double.infinity,
+                                        decoration: BoxDecoration(
+                                          color: AppColors.mainCardLight,
+                                          borderRadius: BorderRadius.vertical(
+                                            top: Radius.circular(
+                                              AppRadius.medium,
+                                            ),
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding: EdgeInsets.all(
+                                            AppSpacing.lg,
+                                          ),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              //Fund account Text
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    'Fund your Pido account below via \nbank transfer',
+                                                    textAlign: TextAlign.start,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .labelLarge
+                                                        ?.copyWith(height: 1.2),
+                                                  ),
+                                                  IconButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    icon: Icon(
+                                                      Icons
+                                                          .keyboard_arrow_down_outlined,
+                                                      size: AppIcons.xl,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+
+                                              //Spacing
+                                              SizedBox(height: 24.h),
+
+                                              //Bank Name Row
+                                              Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.food_bank_outlined,
+                                                    size: AppIcons.md,
+                                                  ),
+                                                  SizedBox(width: 16.w),
+                                                  Container(
+                                                    width: 102.w,
+                                                    child: Text(
+                                                      'Bank Name',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .displaySmall
+                                                          ?.copyWith(
+                                                            color: AppColors
+                                                                .primaryColor,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                      left: 2.w,
+                                                    ),
+                                                    child: Text(
+                                                      'Pido',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .bodyMedium
+                                                          ?.copyWith(
+                                                            color: AppColors
+                                                                .primaryColor,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(height: 16.h),
+                                                ],
+                                              ),
+
+                                              //Account Number
+                                              Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.numbers,
+                                                    size: AppIcons.md,
+                                                  ),
+                                                  SizedBox(width: 16.w),
+                                                  Container(
+                                                    width: 102.w,
+                                                    child: Text(
+                                                      'Account Number',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .displaySmall
+                                                          ?.copyWith(
+                                                            color: AppColors
+                                                                .primaryColor,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                      left: 2.w,
+                                                    ),
+                                                    child: Text(
+                                                      '1234567890',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .bodyMedium
+                                                          ?.copyWith(
+                                                            color: AppColors
+                                                                .primaryColor,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  IconButton(
+                                                    onPressed: () {},
+                                                    icon: Icon(
+                                                      Icons.copy,
+                                                      size: AppIcons.md,
+                                                    ),
+                                                  ),
+                                                  SizedBox(height: 16.h),
+                                                ],
+                                              ),
+
+                                              //Account Name
+                                              Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.person_outline,
+                                                    size: AppIcons.md,
+                                                  ),
+                                                  SizedBox(width: 16.w),
+                                                  Container(
+                                                    width: 102.w,
+                                                    child: Text(
+                                                      'Account Name',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .displaySmall
+                                                          ?.copyWith(
+                                                            color: AppColors
+                                                                .primaryColor,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                      left: 2.w,
+                                                    ),
+                                                    child: Text(
+                                                      'Adeyo Paul',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .bodyMedium
+                                                          ?.copyWith(
+                                                            color: AppColors
+                                                                .primaryColor,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(height: 16.h),
+                                                ],
+                                              ),
+
+                                              //Spacing down
+                                              SizedBox(height: 24.h),
+
+                                              //Share Button
+                                              Largerbutton(
+                                                width: double.infinity,
+                                                height: 51.h,
+                                                title: 'Share Detials',
+                                                isFilled: false,
+                                                onPressed: () {},
+                                                buttonIcon:
+                                                    Icons.ios_share_sharp,
+                                              ),
+
+                                              //Spacing down
+                                              SizedBox(height: 32.h),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
                                 buttonIcon: Icons.arrow_downward_outlined,
                                 isFilled: false,
                               ),
@@ -331,7 +609,14 @@ class _HomeState extends State<Home> {
                                 width: 134.w,
                                 height: 40.h,
                                 title: 'Send Money',
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => Sendmoney(),
+                                    ),
+                                  );
+                                },
                                 buttonIcon: Icons.swap_horiz_outlined,
                                 isFilled: true,
                               ),
@@ -344,7 +629,9 @@ class _HomeState extends State<Home> {
                 ),
               ],
             )
-          : Stack(
+          :
+            // Does not contain Transactions
+            Stack(
               children: [
                 Column(
                   children: [
@@ -364,17 +651,27 @@ class _HomeState extends State<Home> {
                                     // bottom: AppSpacing.xxl,
                                     left: AppSpacing.lg,
                                   ),
-                                  child: Container(
-                                    width: 45.w,
-                                    height: 45.h,
-                                    decoration: BoxDecoration(
-                                      color: AppColors.mainCardLight,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Icon(
-                                      Icons.person_outline,
-                                      size: AppSpacing.xl,
-                                      color: AppColors.iconSecondaryLight,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Profile(),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      width: 45.w,
+                                      height: 45.h,
+                                      decoration: BoxDecoration(
+                                        color: AppColors.mainCardLight,
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Icon(
+                                        Icons.person_outline,
+                                        size: AppSpacing.xl,
+                                        color: AppColors.iconSecondaryLight,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -457,18 +754,42 @@ class _HomeState extends State<Home> {
                                       height: 80.h,
                                       title: 'Buy Airtime',
                                       cardIcon: Icons.phone_android_outlined,
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Airtime(),
+                                          ),
+                                        );
+                                      },
                                     ),
                                     Moreactioncard(
                                       width: 96.w,
                                       height: 80.h,
                                       title: 'Buy Data',
                                       cardIcon: Icons.wifi,
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Buydata(),
+                                          ),
+                                        );
+                                      },
                                     ),
                                     Moreactioncard(
                                       width: 96.w,
                                       height: 80.h,
                                       title: 'Pay Bills',
                                       cardIcon: Icons.event_note_outlined,
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Paybills(),
+                                          ),
+                                        );
+                                      },
                                     ),
                                   ],
                                 ),
@@ -885,7 +1206,14 @@ class _HomeState extends State<Home> {
                                 width: 134.w,
                                 height: 40.h,
                                 title: 'Send Money',
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => Sendmoney(),
+                                    ),
+                                  );
+                                },
                                 buttonIcon: Icons.swap_horiz_outlined,
                                 isFilled: true,
                               ),

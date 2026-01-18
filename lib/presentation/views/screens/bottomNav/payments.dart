@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pidoapp/presentation/views/screens/airtime.dart';
+import 'package:pidoapp/presentation/views/screens/buyData.dart';
+import 'package:pidoapp/presentation/views/screens/payBills.dart';
 import 'package:pidoapp/presentation/views/screens/sendMoney.dart';
 import 'package:pidoapp/presentation/widgets/moreActionCard.dart';
 
@@ -288,13 +291,13 @@ class Payments extends StatelessWidget {
                             );
                             break;
                           case 'Buy Airtime':
-                            print('Navigating to Buy Airtime screen...');
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> Airtime()));
                             break;
                           case 'Buy Data':
-                            print('Navigating to Buy Data screen...');
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> Buydata()));
                             break;
                           case 'Pay Bills':
-                            print('Navigating to Pay Bills screen...');
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> Paybills()));
                             break;
                           default:
                             print('Action for ${action['title']} not defined.');

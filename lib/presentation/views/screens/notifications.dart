@@ -16,8 +16,6 @@ class _NotificationsState extends State<Notifications> {
   final bool containNotifications = true;
   @override
   Widget build(BuildContext context) {
-    // final Size screenSize = MediaQuery.of(context).size;
-    // final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
