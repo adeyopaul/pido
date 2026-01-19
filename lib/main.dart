@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Flutter ScreenUtil Demo',
           debugShowCheckedModeBanner: false,
-          home: Homescreen(),
+          home: Splashscreen(),
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.system,
