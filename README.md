@@ -39,6 +39,8 @@ The application is organised around separate core, presentation, and routing are
 lib/
 ├── core/
 ├── presentation/
+│   ├── views/
+│   └── widgets/
 ├── routes/
 └── main.dart
 ```
@@ -54,9 +56,11 @@ lib/
 - Creating and configuring native splash screens
 - Building consistent UI across different screen sizes
 
-## 📸 Screenshots
+## 📸 Preview
 
-Screenshots will be added as the project portfolio is updated.
+![Pido preview](assets/images/pido-dark.png)
+
+Additional branding assets are available in the `assets/images/` directory.
 
 ## 🚀 Getting Started
 
