@@ -11,7 +11,9 @@ class Largerbutton extends StatelessWidget {
   final String title;
   final bool isFilled;
   final VoidCallback onPressed;
-  final IconData? buttonIcon;
+
+  /// Accepts either a Material [IconData] or Font Awesome [FaIconData].
+  final Object? buttonIcon;
 
   const Largerbutton({
     super.key,
@@ -25,8 +27,26 @@ class Largerbutton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-      Container(
+    final iconColor = isFilled
+        ? AppColors.backgroundLight
+        : AppColors.primaryColor;
+
+    Widget? icon;
+    if (buttonIcon is FaIconData) {
+      icon = FaIcon(
+        buttonIcon as FaIconData,
+        size: AppIcons.md,
+        color: iconColor,
+      );
+    } else if (buttonIcon is IconData) {
+      icon = Icon(
+        buttonIcon as IconData,
+        size: AppIcons.md,
+        color: iconColor,
+      );
+    }
+
+    return SizedBox(
       width: width,
       height: height,
       child: FilledButton(
@@ -45,25 +65,18 @@ class Largerbutton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FaIcon(
-              buttonIcon,
-              size: AppIcons.md,
-              color: isFilled
-                  ? AppColors.backgroundLight
-                  : AppColors.primaryColor,
-            ),
-            SizedBox(width: 8.w),
+            if (icon != null) ...[
+              icon,
+              SizedBox(width: 8.w),
+            ],
             Text(
               title,
-              style: isFilled
-                  ? Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      color: AppColors.backgroundLight,
-                      fontWeight: FontWeight.w600,
-                    )
-                  : Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      color: AppColors.primaryColor,
-                      fontWeight: FontWeight.w600,
-                    ),
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    color: isFilled
+                        ? AppColors.backgroundLight
+                        : AppColors.primaryColor,
+                    fontWeight: FontWeight.w600,
+                  ),
             ),
           ],
         ),
