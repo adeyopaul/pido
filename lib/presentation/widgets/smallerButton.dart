@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:pidoapp/core/constants/appColors.dart';
 import 'package:pidoapp/core/constants/appSizes.dart';
 
@@ -10,7 +11,9 @@ class Smallerbutton extends StatelessWidget {
   final String title;
   final bool isFilled;
   final VoidCallback onPressed;
-  final IconData buttonIcon;
+
+  /// Accepts either a Material [IconData] or Font Awesome [FaIconData].
+  final Object buttonIcon;
 
   const Smallerbutton({
     super.key,
@@ -24,7 +27,32 @@ class Smallerbutton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    final iconColor = isFilled
+        ? AppColors.backgroundLight
+        : AppColors.primaryColor;
+
+    final Widget icon;
+    if (buttonIcon is FaIconData) {
+      icon = FaIcon(
+        buttonIcon as FaIconData,
+        size: AppIcons.md,
+        color: iconColor,
+      );
+    } else if (buttonIcon is IconData) {
+      icon = Icon(
+        buttonIcon as IconData,
+        size: AppIcons.md,
+        color: iconColor,
+      );
+    } else {
+      throw ArgumentError.value(
+        buttonIcon,
+        'buttonIcon',
+        'Must be IconData or FaIconData.',
+      );
+    }
+
+    return SizedBox(
       width: width,
       height: height,
       child: FilledButton(
@@ -43,24 +71,15 @@ class Smallerbutton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            FaIcon(
-              buttonIcon,
-              size: AppIcons.md,
-              color: isFilled
-                  ? AppColors.backgroundLight
-                  : AppColors.primaryColor,
-            ),
+            icon,
             Text(
               title,
-              style: isFilled
-                  ? Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      color: AppColors.backgroundLight,
-                      fontWeight: FontWeight.w600,
-                    )
-                  : Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      color: AppColors.primaryColor,
-                      fontWeight: FontWeight.w600,
-                    ),
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    color: isFilled
+                        ? AppColors.backgroundLight
+                        : AppColors.primaryColor,
+                    fontWeight: FontWeight.w600,
+                  ),
             ),
           ],
         ),
