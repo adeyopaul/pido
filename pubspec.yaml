@@ -37,7 +37,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   flutter_native_splash: ^2.4.7
   flutter_svg: ^2.2.2
-  font_awesome_flutter: ^10.12.0
+  font_awesome_flutter: ^11.0.0
   flutter_lorem: ^2.0.0
   fluttertoast: ^9.0.0
 
